@@ -64,10 +64,11 @@
   color: #333333;
   margin-right: 20px;
 }
-.lists-left .category-list,
+/* .lists-left .category-list,
 .lists-left .brand-list {
-  font-weight: bold;
-}
+  ;
+} */
+
 .nav {
   position: absolute;
   top: 140px;
