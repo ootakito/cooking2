@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+.top-page-header {
+  width: 100%;
+  height: 200px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 子要素を垂直方向に中央揃え */
+  position: relative;
+  background-color: yellow /* 背景色を黄色に設定 */
+}
+
+.cooking.logo {
+  position: absolute;
+  top: 7px;
+  right: 20px;
+}
+
+.cooking.logoo {
+  position: absolute;
+  top: 7px;
+  left: 20px;
+}
+
+.search-bar-contents {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* 下部のマージンを追加 */
+}
+
+.search-form {
+  left: 250px;
+  flex: 1;
+  display: flex;
+  margin-right: 10px;
+}
+.input-box {
+  flex: 1;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+.lists-left,
+.lists-right {
+  display: flex;
+  align-items: center;
+}
+.category-list,
+.brand-list,
+.user-nickname,
+.logout,
+.login,
+.sign-up {
+  text-decoration: none;
+  color: #333333;
+  margin-right: 20px;
+}
+.lists-left .category-list,
+.lists-left .brand-list {
+  font-weight: bold;
+}
+.nav {
+  position: absolute;
+  top: 140px;
+  left: 50px;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: flex-end; /* 右端に寄せる */
+  align-items: center; /* 子要素を垂直方向に中央揃え */
+  margin-top: 20px;
+}
+

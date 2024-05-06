@@ -1,0 +1,32 @@
+<header class='top-page-header'>
+  <div class='cooking logo'>
+    <%= image_tag 'coooking.png', size: '185x185' %>
+  </div>
+  <div class='cooking logoo'>
+    <%= image_tag 'coooking.png', size: '185x185' %>
+  </div>
+  <!-- 検索フォーム -->
+  <div class='search-bar-contents'>
+    <form class="search-form" action="#">
+      <input class='input-box' placeholder='キーワードから探す'>
+    </form>
+  </div>
+  <!-- ナビゲーション -->
+  <div class='nav'>
+    <!-- 左側ナビゲーション -->
+    <ul class='lists-left'>
+      <li><a href="#" class="category-list">カテゴリー</a></li>
+      <li><a href="#" class="brand-list">ブランド</a></li>
+    </ul>
+    <!-- 右側ナビゲーション -->
+    <ul class='lists-right'>
+      <% if user_signed_in? %>
+        <li><a href="#" class="user-nickname"><%= current_user.nickname %></a></li>
+        <li><a href="<%= destroy_user_session_path %>" data-turbo-method="delete" class="logout">ログアウト</a></li>
+      <% else %>
+        <li><a href="<%= new_user_session_path %>" class="login">ログイン</a></li>
+        <li><a href="<%= new_user_registration_path %>" class="sign-up">新規登録</a></li>
+        <% end %> 
+    </ul>
+  </div>
+</header>

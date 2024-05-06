@@ -1,2 +1,48 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<%= render "shared/header" %>
+<div class='main'>
+  <div class="recipe-new">新着のレシピ</div>
+  <div class="recipe-grid">
+
+    <div class="recipe-card">
+
+      <p>これはサンプルのレシピの説明です。</p>
+    </div>
+
+
+    <div class="recipe-card">
+
+      <h3>サンプルレシピ2</h3>
+      <p>これはサンプルのレシピの説明です。</p>
+    </div>
+
+
+    <div class="recipe-card">
+      <h3>新しいレシピ1</h3>
+      <p>これは新しいレシピの説明です。</p>
+    </div>
+
+
+    <div class="recipe-card new-card">
+      <h3>新しいレシピ2</h3>
+      <p>これは新しいレシピの説明です。</p>
+    </div>
+
+
+    <div class="recipe-card new-card">
+      <h3>新しいレシピ3</h3>
+      <p>これは新しいレシピの説明です。</p>
+    </div>
+
+    <div class="recipe-card new-card">
+      <h3>新しいレシピ4</h3>
+      <p>これは新しいレシピの説明です。</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="purchase-btn">
+
+  <span class='purchase-btn-text'>投稿する</span>
+  <%= image_tag 'coooking.png' , size: '185x100' ,class: "purchase-btn-icon" %>
+</div>
