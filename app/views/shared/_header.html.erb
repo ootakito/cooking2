@@ -16,7 +16,9 @@
     <!-- 左側ナビゲーション -->
     <ul class='lists-left'>
       <li><a href="#" class="category-list">新着順が入る予定</a></li>
-      <li><a href="#" class="brand-list">投稿する</a></li>
+      <li>
+        <%= link_to '投稿する', new_post_path, class: 'brand-list' %>
+      </li>
     </ul>
     <!-- 右側ナビゲーション -->
     <ul class='lists-right'>

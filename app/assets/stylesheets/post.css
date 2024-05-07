@@ -1,0 +1,47 @@
+/* posts.css */
+#error_explanation {
+  color: red;
+  background: #fdd;
+  border: 1px solid red;
+  padding: 8px 16px;
+  margin-bottom: 20px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.field {
+  margin-bottom: 20px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.custom-image-title input {
+  width: 30%; /* 画像タイトルの入力フィールドの幅 */
+}
+
+.custom-title input {
+  width: 70%; /* タイトルの入力フィールドの幅 */
+}
+
+.custom-description textarea {
+  width: 200px; /* 説明のテキストエリアの幅 */
+  height: 500px; /* 説明のテキストエリアの高さ */
+}
+
+.actions {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.custom-actions input[type="submit"] {
+  width: 100%; /* 送信ボタンの幅 */
+  background-color: yellow;
+  color: black;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-actions input[type="submit"]:hover {
+  background-color: yellow;
+}
