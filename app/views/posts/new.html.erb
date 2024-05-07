@@ -1,34 +1,43 @@
-<h1>新しい投稿</h1>
-
-<%= form_with(model: @post, local: true) do |form| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "エラー") %>がこの投稿の保存を阻んでいます:</h2>
-
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="items-sell-contents">
+  <div class="items-sell-main">
+    <h2 class="items-sell-title">商品の情報を入力</h2>
+    <%= form_with model: @post, local: true do |f| %>
+    
+    <%# 商品画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        商品画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"post-image" %>
+      </div>
     </div>
+    <%# /商品画像 %>
+    <%# 商品名と商品説明 %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        商品名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :name, class:"items-text", id:"post-name", placeholder:"料理名（必須 40文字まで)", maxlength:"40" %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          商品の説明
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :description, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"200" %>
+      </div>
+    </div>
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "出品する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  </div>
   <% end %>
-
-  <div class="field custom-image-title">
-    <%= form.label :image_title_one, "画像タイトル１" %>
-    <%= form.text_field :image_title_one %>
-  </div>
-
-  <div class="field custom-title">
-    <%= form.label :title, "タイトル" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field custom-description">
-    <%= form.label :description, "説明" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="actions custom-actions">
-    <%= form.submit "投稿する" %>
-  </div>
-<% end %>
+</div>
