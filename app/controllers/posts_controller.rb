@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def index
     @posts = Post.all
   end
@@ -19,6 +20,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:image_title_one, :title, :description)
+    params.require(:post).permit(:title, :description, :image).merge(user_id: current_user.id)
   end
 end
