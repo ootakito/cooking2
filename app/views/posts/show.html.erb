@@ -14,11 +14,18 @@
       <div class="items-text" id="post-title">
         <%= @post.title %>
       </div>
-      <div class="weight-bold-text">
-        レシピの説明
+      <div class="items-explain">
+       <div class="weight-bold-text">
+         レシピの説明
+       </div>
       </div>
       <div class="items-description">
         <%= @post.description %>
+      </div>
+      <div class="show-btn">
+       <%= link_to "レシピの編集", edit_post_path(@post), class: "item-red-btn" %>
+       <p class="or-text">or</p>
+       <%= link_to "削除", post_path(@post), method: :delete, data: {turbo_method: :delete}, class:"item-destroy" %>
       </div>
     </div>
   </div>

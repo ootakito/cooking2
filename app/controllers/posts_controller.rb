@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
   def index
     @posts = Post.order(created_at: :desc).limit(6)
   end
@@ -11,17 +13,45 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to posts_path, notice: 'Post was successfully created.'
+      redirect_to posts_path
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
+  def edit
+  end
+
+  def update
+    if current_user.id == @post.user_id
+      if @post.update(post_params)
+        redirect_to item_path(@post)
+      else
+        render :edit, status: :unprocessable_entity
+      end
+    else
+      redirect_to root_path
+    end
+  end
+
+  def destroy
+    if current_user.id == @post.user_id
+      @post.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
+  end
+
+
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :description, :image).merge(user_id: current_user.id)
