@@ -1,5 +1,6 @@
 /* カード類の調整はindex.htmlから */
 .recipe-card-show {
+  width: 1500px;
   display: flex;
   justify-content: center;
   margin-top: 50px;
