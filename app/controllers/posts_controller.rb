@@ -23,12 +23,13 @@ class PostsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path unless current_user.id == @post.user_id
   end
 
   def update
     if current_user.id == @post.user_id
       if @post.update(post_params)
-        redirect_to item_path(@post)
+        redirect_to post_path(@post)
       else
         render :edit, status: :unprocessable_entity
       end

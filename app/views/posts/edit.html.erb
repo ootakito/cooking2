@@ -1,1 +1,45 @@
-<h1>edit</h1>
+<%# cssはレシピ投稿ページのものを併用しています。
+app/assets/stylesheets/posts/new.css %>
+<div class="items-sell-contents">
+  <div class="items-sell-main">
+    <h2 class="items-sell-title">レシピを入力</h2>
+    <%= form_with model: @post, local: true do |f| %>
+    <%= render 'shared/error_messages',model: f.object %>
+    <%# レシピ画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        レシピ画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"post-image" %>
+      </div>
+    </div>
+    <%# /レシピ画像 %>
+    <%# レシピ名とレシピ説明 %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        レシピ名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"items-text", id:"post-title", placeholder:"料理名（必須 15文字まで)", maxlength:"15" %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          レシピの説明
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :description, class:"items-description", id:"post-info", placeholder:"料理の説明（必須 200文字まで）" ,rows:"7" ,maxlength:"200" %>
+      </div>
+    </div>
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "レシピを編集する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  </div>
+  <% end %>
+</div>

@@ -9,24 +9,33 @@
   <div class="show-text">
     <div class="new-items">
       <div class="weight-bold-text">
+        投稿者 
+      </div>
+      <div class="items-explain">
+      <div class="items-text" id="post-title">
+        <%= @post.user.nickname %>
+      </div>
+      <div class="items-explain">
+      <div class="weight-bold-text">
         レシピ名
       </div>
       <div class="items-text" id="post-title">
         <%= @post.title %>
       </div>
       <div class="items-explain">
-       <div class="weight-bold-text">
-         レシピの説明
-       </div>
+      <div class="weight-bold-text">
+        レシピの説明
       </div>
-      <div class="items-description">
-        <%= @post.description %>
       </div>
+        <%= form_with model: @post, local: true do |f| %>
+        <%= f.text_area :description, class:"items-description", id:"post-info", placeholder:"料理の説明（必須 200文字まで）" ,rows:"7" ,maxlength:"200", readonly: true %>
+        <% end %>
       <div class="show-btn">
-       <%= link_to "レシピの編集", edit_post_path(@post), class: "item-red-btn" %>
-       <p class="or-text">or</p>
-       <%= link_to "削除", post_path(@post), method: :delete, data: {turbo_method: :delete}, class:"item-destroy" %>
-      </div>
+        <% if current_user && current_user.id == @post.user_id %>
+        <%= link_to "レシピの編集", edit_post_path(@post), class: "item-red-btn" %>
+          <p class="or-text">or</p>
+        <%= link_to "削除", post_path(@post), method: :delete, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "item-destroy" %>
+        <% end %>
     </div>
   </div>
 </div>
