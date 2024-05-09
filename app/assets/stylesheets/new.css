@@ -11,11 +11,6 @@
   min-width: 500px;
 }
 
-.items-sell-header {
-  padding: 5vh 0;
-  text-align: center;
-}
-
 .items-sell-main {
   background-color: #FFF;
   width: 70vw;
@@ -66,7 +61,7 @@
 
 /* /共通 */
 
-/* 商品画像 */
+/* レシピ画像 */
 .img-upload {
   display: flex;
   justify-content: space-between;
@@ -83,15 +78,25 @@
   margin-bottom: 15px;
 }
 
-/* /商品画像 */
+/* /レシピ画像 */
 
-/* 商品名と商品説明 */
+/* レシピ名とレシピ説明 */
 .new-items {
   padding: 2vh 0;
 }
 
 .items-text {
   width: 100%;
+  padding: 16px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: none;
+}
+
+.items-description {
+  width: 100%;
+  height: 300px;
   padding: 16px 16px 8px;
   border-radius: 4px;
   border: 1px solid #ccc;

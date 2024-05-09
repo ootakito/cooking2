@@ -1,7 +1,23 @@
-/* カード類の調整はindex.htmlから */
+/* カード類の調整はindex.cssから */
 .recipe-card-show {
   width: 1500px;
   display: flex;
   justify-content: center;
   margin-top: 50px;
 }
+/* レシピのタイトルやテキストはnew.cssこの先は微調整 */
+.recipe-card-show2 {
+  width: 1500px;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.show-text {
+  top: 500px;
+  background-color: #FFF;
+  width: 70vw;
+  min-width: 450px;
+  padding: 10vh 15vw;
+}
+

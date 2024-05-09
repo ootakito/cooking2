@@ -1,8 +1,26 @@
 <%= render "shared/header" %>
+
 <div class="recipe-card-show">
   <div class="recipe-card">
     <%= image_tag @post.image.variant(resize: '260x260!'), class: 'item-image item-box-img' if @post.image.attached? %>
   </div>
 </div>
-<%= @post.title %>
-<%= @post.description %>
+<div class="recipe-card-show2">
+  <div class="show-text">
+    <div class="new-items">
+      <div class="weight-bold-text">
+        レシピ名
+      </div>
+      <div class="items-text" id="post-title">
+        <%= @post.title %>
+      </div>
+      <div class="weight-bold-text">
+        レシピの説明
+      </div>
+      <div class="items-description">
+        <%= @post.description %>
+      </div>
+    </div>
+  </div>
+</div>
+
