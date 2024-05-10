@@ -92,12 +92,12 @@
 
 
 /* 下部ボタン */
-.sell-btn-contents {
+.post-btn-contents {
   width: 100%;
   text-align: center;
 }
 
-.sell-btn {
+.post-btn {
   background: yellow;
   border: 1px solid yellow;
   color: black;

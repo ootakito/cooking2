@@ -1,4 +1,4 @@
-.purchase-btn {
+.recipe-btn {
   width: 125px;
   height: 125px;
   background: yellow;
@@ -10,7 +10,7 @@
   padding: 15px;
 }
 
-.purchase-btn-text {
+.recipe-btn-text {
   color: black;
   display: block;
   font-size: 18px
@@ -18,7 +18,7 @@
   margin-bottom: 5px;
 }
 
-.purchase-btn-icon {
+.recipe-btn-icon {
   width: 75px;
   height: 75px;
 }
