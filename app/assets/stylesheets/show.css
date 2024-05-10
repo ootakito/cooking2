@@ -21,7 +21,7 @@
   padding: 10vh 15vw;
 }
 
-.item-red-btn {
+.post-yellow-btn {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -33,7 +33,7 @@
   padding: 2vh 10vw;
 }
 
-.item-destroy {
+.post-destroy {
   display: flex;
   justify-content: center;
   background-color: lightgray;
