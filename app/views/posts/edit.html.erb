@@ -1,8 +1,8 @@
 <%# cssはレシピ投稿ページのものを併用しています。
 app/assets/stylesheets/posts/new.css %>
-<div class="items-sell-contents">
-  <div class="items-sell-main">
-    <h2 class="items-sell-title">レシピを入力</h2>
+<div class="post-contents">
+  <div class="post-main">
+    <h2 class="post-title">レシピを入力</h2>
     <%= form_with model: @post, local: true do |f| %>
     <%= render 'shared/error_messages',model: f.object %>
     <%# レシピ画像 %>
@@ -20,13 +20,13 @@ app/assets/stylesheets/posts/new.css %>
     </div>
     <%# /レシピ画像 %>
     <%# レシピ名とレシピ説明 %>
-    <div class="new-items">
+    <div class="new-posts">
       <div class="weight-bold-text">
         レシピ名
         <span class="indispensable">必須</span>
       </div>
       <%= f.text_area :title, class:"items-text", id:"post-title", placeholder:"料理名（必須 15文字まで)", maxlength:"15" %>
-      <div class="items-explain">
+      <div class="posts-explain">
         <div class="weight-bold-text">
           レシピの説明
           <span class="indispensable">必須</span>
