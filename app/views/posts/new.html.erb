@@ -23,13 +23,13 @@
         レシピ名
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :title, class:"items-text", id:"post-title", placeholder:"料理名（必須 15文字まで)", maxlength:"15" %>
+      <%= f.text_area :title, class:"posts-text", id:"post-title", placeholder:"料理名（必須 15文字まで)", maxlength:"15" %>
       <div class="posts-explain">
         <div class="weight-bold-text">
           レシピの説明
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :description, class:"items-description", id:"post-info", placeholder:"料理の説明（必須 200文字まで）" ,rows:"7" ,maxlength:"200" %>
+        <%= f.text_area :description, class:"posts-description", id:"post-info", placeholder:"料理の説明（必須 200文字まで）" ,rows:"7" ,maxlength:"200" %>
       </div>
     </div>
     <%# 下部ボタン %>

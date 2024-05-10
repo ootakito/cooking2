@@ -12,14 +12,14 @@
         投稿者 
       </div>
       <div class="posts-explain">
-      <div class="items-text" id="post-title">
+      <div class="posts-text" id="post-title">
         <%= @post.user.nickname %>
       </div>
       <div class="posts-explain">
       <div class="weight-bold-text">
         レシピ名
       </div>
-      <div class="items-text" id="post-title">
+      <div class="posts-text" id="post-title">
         <%= @post.title %>
       </div>
       <div class="posts-explain">
@@ -28,7 +28,7 @@
       </div>
       </div>
         <%= form_with model: @post, local: true do |f| %>
-        <%= f.text_area :description, class:"items-description", id:"post-info", placeholder:"料理の説明（必須 200文字まで）" ,rows:"7" ,maxlength:"200", readonly: true %>
+        <%= f.text_area :description, class:"posts-description", id:"post-info", placeholder:"料理の説明（必須 200文字まで）" ,rows:"7" ,maxlength:"200", readonly: true %>
         <% end %>
       <div class="show-btn">
         <% if current_user && current_user.id == @post.user_id %>
