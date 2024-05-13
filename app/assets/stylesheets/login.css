@@ -1,17 +1,26 @@
+.form-wrap2 {
+  width: 50%;
+  background-color: white;
+  padding-bottom: 35px;
+}
+
 .login-btn {
   width: 50%;
   margin: 0 auto;
   margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 .login-yellow-btn {
-  width: 100%;
+  width: 80%;
   background: yellow;
   border: 1px solid yellow;
   color: black;
   line-height: 48px;
   font-size: 14px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 .login-flash-message {
