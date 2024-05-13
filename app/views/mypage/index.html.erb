@@ -9,6 +9,7 @@
         <%= post.title %>
         <%= image_tag post.image.variant(resize: "260x260!"), class: 'post-image' if post.image.attached? %>
         <% end %>
+        <p><%= post.like_count %> いいね⭐️</p>
       </div>
     <% end %>
   </div>
