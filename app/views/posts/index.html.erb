@@ -8,6 +8,9 @@
         <%= post.title %>
         <%= image_tag post.image.variant(resize: "260x260!"), class: 'post-image' if post.image.attached? %>
         <% end %>
+        <div id="like-btn<%= post.id %>">
+        <%= render partial: "likes/like", locals: { post: post } %>
+        </div>
       </div>
     <% end %>
   </div>

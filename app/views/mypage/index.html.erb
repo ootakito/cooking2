@@ -5,7 +5,7 @@
   <div class="recipe-grid">
     <% @posts.each do |post| %>
       <div class="recipe-card">
-        <%= link_to post_path(post) do %>
+        <%= link_to edit_post_path(post) do %>
         <%= post.title %>
         <%= image_tag post.image.variant(resize: "260x260!"), class: 'post-image' if post.image.attached? %>
         <% end %>

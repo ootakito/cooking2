@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'mypage/index'
   devise_for :users
-  resources :posts
-    resource :mypage, only: [:index]
+  resources :posts do
+    resource :likes, only: [:create, :destroy]
+  end
   root "posts#index"
+  get 'mypage/index'
 end
