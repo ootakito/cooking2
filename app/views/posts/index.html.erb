@@ -2,18 +2,18 @@
 <div class='main'>
   <div class="recipe-new">新着のレシピ</div>
   <div class="recipe-grid">
-    <% @posts.each do |post| %>
-      <div class="recipe-card">
-        <%= link_to post_path(post) do %>
-        <%= post.title %>
+  <% @posts.each do |post| %>
+    <div class="recipe-card">
+      <%= link_to post_path(post), style: "text-decoration: none;" do %>
+      <%= post.title %>
         <%= image_tag post.image.variant(resize: "260x260!"), class: 'post-image' if post.image.attached? %>
-        <% end %>
-        <div id="like-btn<%= post.id %>">
+      <% end %>
+      <div id="like-btn<%= post.id %>">
         <%= render partial: "likes/like", locals: { post: post } %>
-        </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
   <%= link_to new_post_path, class: 'recipe-btn' do %>
   <span class='recipe-btn-text'>投稿する</span>
   <%= image_tag 'coooking.png', class: "recipe-btn-icon" %>
