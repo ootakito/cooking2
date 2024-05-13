@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   end
   root "posts#index"
   get 'mypage/index'
+  get 'popularposts/index'
 end
