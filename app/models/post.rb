@@ -10,4 +10,7 @@ class Post < ApplicationRecord
   def like_count
     likes.count
   end
+  def self.ransackable_attributes(auth_object = nil)
+    ["title", "description"]
+  end
 end

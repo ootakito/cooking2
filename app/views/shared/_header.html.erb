@@ -7,9 +7,12 @@
   </div>
   <!-- 検索フォーム -->
   <div class='search-bar-contents'>
-    <form class="search-form" action="#">
-      <input class='input-box' placeholder='キーワードから探す'>
-    </form>
+    <%= search_form_for @q, url: search_posts_path, html: { id: "detailed-search-form", class: "search-form" } do |f| %>
+      <div class="search-field">
+        <%= f.text_field :title_cont, placeholder: 'キーワードから探す', class: 'input-box' %>
+      </div>
+      <%= f.submit '検索', class: 'search-button' %>
+    <% end %>
   </div>
   <!-- ナビゲーション -->
   <div class='nav'>
