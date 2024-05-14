@@ -5,10 +5,10 @@ Rails.application.routes.draw do
     resource :likes, only: [:create, :destroy]
     collection do
       get 'search'
+      get 'mypage', to: 'mypage#index'
+      get 'popularposts', to: 'popularposts#index'
     end
   end
 
   root "posts#index"
-  get 'mypage/index'
-  get 'popularposts/index'
 end
