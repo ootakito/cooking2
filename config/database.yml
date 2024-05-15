@@ -50,6 +50,8 @@ test:
 #
 production:
   <<: *default
+  adapter: mysql2
   database: cook_ing2_production
-  username: cook_ing2
-  password: <%= ENV["COOKING_KING2_DATABASE_PASSWORD"] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
