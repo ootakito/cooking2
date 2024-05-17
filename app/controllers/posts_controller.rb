@@ -14,7 +14,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to posts_path
+      set_primary_image_metadata(@post)
+      redirect_to posts_path, notice: '投稿が成功しました。'
     else
       render :new, status: :unprocessable_entity
     end
@@ -53,7 +54,6 @@ class PostsController < ApplicationController
     @posts = @q.result
   end
 
-
   private
 
   def set_post
@@ -65,6 +65,20 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :image).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :description, images: []).merge(user_id: current_user.id)
+  end
+
+  def set_primary_image_metadata(post)
+    return unless post.images.attached?
+
+    post.images.each_with_index do |image, index|
+      if index == 0
+        image.metadata['primary'] = true
+        image.save
+      else
+        image.metadata['primary'] = false
+        image.save
+      end
+    end
   end
 end

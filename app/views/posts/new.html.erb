@@ -1,43 +1,61 @@
 <div class="post-contents">
   <div class="post-main">
     <h2 class="post-title">レシピを入力</h2>
-    <%= form_with model: @post, local: true do |f| %>
-    <%= render 'shared/error_messages',model: f.object %>
-    <%# レシピ画像 %>
-    <div class="img-upload">
-      <div class="weight-bold-text">
-        レシピ画像
-        <span class="indispensable">必須</span>
-      </div>
-      <div class="click-upload">
-        <p>
-          クリックしてファイルをアップロード
-        </p>
-        <%= f.file_field :image, id:"post-image" %>
-      </div>
-    </div>
-    <%# /レシピ画像 %>
-    <%# レシピ名とレシピ説明 %>
-    <div class="new-posts">
-      <div class="weight-bold-text">
-        レシピ名
-        <span class="indispensable">必須</span>
-      </div>
-      <%= f.text_area :title, class:"posts-text", id:"post-title", placeholder:"料理名（必須 15文字まで)", maxlength:"15" %>
-      <div class="posts-explain">
+    <%= form_with model: @post, id: 'new_post', local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+      
+      <%# レシピ画像 %>
+      <div class="img-upload">
         <div class="weight-bold-text">
-          レシピの説明
+          レシピ画像
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :description, class:"posts-description", id:"post-info", placeholder:"料理の説明（必須 200文字まで）" ,rows:"7" ,maxlength:"200" %>
+        <div class="image-field">
+          <div id="previews">
+            <div class="image-upload-wrapper" data-index="0">
+              <%= f.file_field :images, name: 'post[images][]', data: { index: 0 }, required: true %>
+              <img class="preview-image" id="preview-0" />
+              <button type="button" class="delete-image-button" data-index="0" style="display: none;">削除</button>
+            </div>
+            <div class="image-upload-wrapper" data-index="1">
+              <%= f.file_field :images, name: 'post[images][]', data: { index: 1 } %>
+              <img class="preview-image" id="preview-1" />
+              <button type="button" class="delete-image-button" data-index="1" style="display: none;">削除</button>
+            </div>
+            <div class="image-upload-wrapper" data-index="2">
+              <%= f.file_field :images, name: 'post[images][]', data: { index: 2 } %>
+              <img class="preview-image" id="preview-2" />
+              <button type="button" class="delete-image-button" data-index="2" style="display: none;">削除</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <%# 下部ボタン %>
-    <div class="post-btn-contents">
-      <%= f.submit "レシピを投稿する" ,class:"post-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
-    </div>
-    <%# /下部ボタン %>
+      <%# /レシピ画像 %>
+
+      <%# レシピ名とレシピ説明 %>
+      <div class="new-posts">
+        <div class="weight-bold-text">
+          レシピ名
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :title, class: "posts-text", id: "post-title", placeholder: "料理名（必須 15文字まで）", maxlength: "15" %>
+
+        <div class="posts-explain">
+          <div class="weight-bold-text">
+            レシピの説明
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.text_area :description, class: "posts-description", id: "post-info", placeholder: "料理の説明（必須 200文字まで）", rows: "7", maxlength: "200" %>
+        </div>
+      </div>
+      <%# /レシピ名とレシピ説明 %>
+
+      <%# 下部ボタン %>
+      <div class="post-btn-contents">
+        <%= f.submit "レシピを投稿する", class: "post-btn" %>
+        <%= link_to 'もどる', root_path, class: "back-btn" %>
+      </div>
+      <%# /下部ボタン %>
+    <% end %>
   </div>
-  <% end %>
 </div>
