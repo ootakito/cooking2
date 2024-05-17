@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many_attached :images
+  attr_accessor :remove_image_ids
 
   validates :title, presence: true
   validates :description, presence: true, length: { maximum: 200 }

@@ -31,6 +31,7 @@ class PostsController < ApplicationController
   def update
     if current_user.id == @post.user_id
       if @post.update(post_params)
+        remove_images
         redirect_to post_path(@post)
       else
         render :edit, status: :unprocessable_entity
@@ -65,7 +66,16 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, images: []).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :description, images: [], remove_image_ids: []).merge(user_id: current_user.id)
+  end
+
+  def remove_images
+    if params[:post][:remove_image_ids].present?
+      params[:post][:remove_image_ids].each do |image_id|
+        image = @post.images.find(image_id)
+        image.purge
+      end
+    end
   end
 
   def set_primary_image_metadata(post)
