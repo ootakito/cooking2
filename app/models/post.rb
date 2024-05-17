@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many_attached :images
 
   validates :title, presence: true
@@ -20,7 +20,7 @@ class Post < ApplicationRecord
   end
 
   def primary_image
-    images.find { |image| image.metadata['primary'] }
+    images.find { |image| image.metadata['primary'] } || images.first
   end
 
   private
