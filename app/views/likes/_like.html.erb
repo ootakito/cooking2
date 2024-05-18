@@ -1,8 +1,10 @@
 <% if user_signed_in? %>
   <% if post.liked_by?(current_user) %>
-    <%= link_to "⭐️", post_likes_path(post.id), data: { turbo_method: :delete }, class: "post_likes", style: "text-decoration: none;" %>
+    <%= link_to "⭐️", post_likes_path(post.id), data: { turbo_method: :delete }, class: "post_likes", style: "text-decoration: none;"  , remote: true %>
   <% else %>
-    <%= link_to "いいね!⭐️", post_likes_path(post.id), data: { turbo_method: :post }, class: "post_likes", style: "text-decoration: none;" %>
+    <%= link_to "いいね!⭐️", post_likes_path(post.id), data: { turbo_method: :post }, class: "post_likes", style: "text-decoration: none;"  , remote: true %>
   <% end %>
-  <p><%= post.like_count %> いいね⭐️</p>
 <% end %>
+
+<p><%= post.like_count %> いいね⭐️</p>
+
