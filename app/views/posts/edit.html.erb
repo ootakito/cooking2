@@ -1,56 +1,45 @@
+<%# cssはレシピ投稿ページのものを併用しています。
+app/assets/stylesheets/posts/new.css %>
 <div class="post-contents">
   <div class="post-main">
-    <h2 class="post-title">レシピを編集</h2>
-    <%= form_with model: @post, local: true, id: "edit_post" do |f| %>
-      <%= render 'shared/error_messages', model: f.object %>
-
-      <div class="img-upload">
+    <h2 class="post-title">レシピを入力</h2>
+    <%= form_with model: @post, local: true do |f| %>
+    <%= render 'shared/error_messages',model: f.object %>
+    <%# レシピ画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        レシピ画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"post-image" %>
+      </div>
+    </div>
+    <%# /レシピ画像 %>
+    <%# レシピ名とレシピ説明 %>
+    <div class="new-posts">
+      <div class="weight-bold-text">
+        レシピ名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"posts-text", id:"post-title", placeholder:"料理名（必須 15文字まで)", maxlength:"15" %>
+      <div class="posts-explain">
         <div class="weight-bold-text">
-          レシピ画像
+          レシピの説明
           <span class="indispensable">必須</span>
         </div>
-        <div class="image-field">
-          <div id="previews">
-            <% @post.images.each_with_index do |image, i| %>
-              <div class="image-upload-wrapper" data-index="<%= i %>">
-                <%= image_tag image, class: 'preview-image', id: "preview-#{i}" %>
-                <%= f.file_field :images, name: 'post[images][]', data: { index: i } %>
-                <%= f.hidden_field :remove_image_ids, value: image.id, id: "remove_image_ids_#{i}", data: { index: i }, multiple: true %>
-                <button type="button" class="delete-image-button" data-index="<%= i %>">削除</button>
-              </div>
-            <% end %>
-            <% remaining_slots = 3 - @post.images.size %>
-            <% remaining_slots.times do |i| %>
-              <div class="image-upload-wrapper" data-index="<%= i + @post.images.size %>">
-                <%= f.file_field :images, name: 'post[images][]', data: { index: i + @post.images.size } %>
-                <img class="preview-image" id="preview-<%= i + @post.images.size %>" style="display: none;" />
-                <button type="button" class="delete-image-button" data-index="<%= i + @post.images.size %>" style="display: none;">削除</button>
-              </div>
-            <% end %>
-          </div>
-        </div>
+        <%= f.text_area :description, class:"posts-description", id:"post-info", placeholder:"料理の説明（必須 200文字まで）" ,rows:"7" ,maxlength:"200" %>
       </div>
-
-      <div class="new-posts">
-        <div class="weight-bold-text">
-          <label for="post-title">レシピ名</label>
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.text_area :title, class: "posts-text", id: "post-title", placeholder: "料理名（必須 15文字まで）", maxlength: "15" %>
-
-        <div class="posts-explain">
-          <div class="weight-bold-text">
-            <label for="post-info">レシピの説明</label>
-            <span class="indispensable">必須</span>
-          </div>
-          <%= f.text_area :description, class: "posts-description", id: "post-info", placeholder: "料理の説明（必須 200文字まで）", rows: "7", maxlength: "200" %>
-        </div>
-      </div>
-
-      <div class="post-btn-contents">
-        <%= f.submit "レシピを更新する", class: "post-btn" %>
-        <%= link_to 'もどる', root_path, class: "back-btn" %>
-      </div>
-    <% end %>
+    </div>
+    <%# 下部ボタン %>
+    <div class="post-btn-contents">
+      <%= f.submit "レシピを編集する" ,class:"post-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
   </div>
+  <% end %>
 </div>

@@ -6,9 +6,7 @@
     <div class="recipe-card">
       <%= link_to post_path(post), style: "text-decoration: none;" do %>
       <%= post.title %>
-        <% if post.primary_image.present? %>
-          <%= image_tag post.primary_image.variant(resize: "260x260!"), class: 'post-image' %>
-        <% end %>
+        <%= image_tag post.image.variant(resize: "260x260!"), class: 'post-image' if post.image.attached? %>
       <% end %>
       <div id="like-btn<%= post.id %>">
         <%= render partial: "likes/like", locals: { post: post } %>

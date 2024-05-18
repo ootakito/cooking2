@@ -14,8 +14,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      set_primary_image_metadata(@post)
-      redirect_to posts_path, notice: '投稿が成功しました。'
+      redirect_to posts_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,7 +30,6 @@ class PostsController < ApplicationController
   def update
     if current_user.id == @post.user_id
       if @post.update(post_params)
-        remove_images
         redirect_to post_path(@post)
       else
         render :edit, status: :unprocessable_entity
@@ -55,6 +53,7 @@ class PostsController < ApplicationController
     @posts = @q.result
   end
 
+
   private
 
   def set_post
@@ -66,29 +65,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, images: [], remove_image_ids: []).merge(user_id: current_user.id)
-  end
-
-  def remove_images
-    if params[:post][:remove_image_ids].present?
-      params[:post][:remove_image_ids].each do |image_id|
-        image = @post.images.find(image_id)
-        image.purge
-      end
-    end
-  end
-
-  def set_primary_image_metadata(post)
-    return unless post.images.attached?
-
-    post.images.each_with_index do |image, index|
-      if index == 0
-        image.metadata['primary'] = true
-        image.save
-      else
-        image.metadata['primary'] = false
-        image.save
-      end
-    end
+    params.require(:post).permit(:title, :description, :image).merge(user_id: current_user.id)
   end
 end
