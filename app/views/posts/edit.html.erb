@@ -6,18 +6,17 @@ app/assets/stylesheets/posts/new.css %>
     <%= form_with model: @post, local: true do |f| %>
     <%= render 'shared/error_messages',model: f.object %>
     <%# レシピ画像 %>
-    <div class="img-upload">
-      <div class="weight-bold-text">
-        レシピ画像
-        <span class="indispensable">必須</span>
+      <div class="img-upload">
+        <div class="weight-bold-text">
+          レシピ画像
+          <span class="indispensable">必須</span>
+        </div>
+        <div id="previews"></div>
+        <div class="click-upload">
+          <p>クリックしてファイルをアップロード</p>
+          <%= f.file_field :images, name: 'post[images][]', multiple: true, id: "post-images" %>
+        </div>
       </div>
-      <div class="click-upload">
-        <p>
-          クリックしてファイルをアップロード
-        </p>
-        <%= f.file_field :image, id:"post-image" %>
-      </div>
-    </div>
     <%# /レシピ画像 %>
     <%# レシピ名とレシピ説明 %>
     <div class="new-posts">
