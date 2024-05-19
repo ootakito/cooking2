@@ -1,27 +1,41 @@
 const previewImages = () => {
   console.log("preview.jsが読み込まれました");
-  
-  // 新規投稿・編集ページのフォームを取得
-  const postForm = document.getElementById('new_post');
 
-  // 新規投稿・編集ページのフォームがないならここで終了
-  if (!postForm) {
+  const newPostForm = document.getElementById('new_post');
+  const editPostForm = document.getElementById('edit_post');
+
+  if (!newPostForm && !editPostForm) {
     console.log("投稿フォームが見つかりませんでした");
-    return null;
+    return;
   }
-  
-  console.log("投稿フォームが見つかりました");
 
   const input = document.getElementById('post-images');
   const previews = document.getElementById('previews');
 
   if (!input || !previews) {
-    console.error('ファイル入力またはプレビューコンテナが見つかりませんでした');
+    console.error('File input or preview container not found');
     return;
   }
 
   // 既存のイベントリスナーを削除
   input.removeEventListener('change', handleFileSelect);
+
+  // 新規投稿フォームが存在する場合の処理
+  if (newPostForm) {
+    console.log("新規投稿フォームが見つかりました");
+  }
+
+  // 編集投稿フォームが存在する場合の処理
+  if (editPostForm) {
+    console.log("編集投稿フォームが見つかりました");
+
+    // 既存の画像を初期表示 (編集ページ)
+    const existingImages = editPostForm.querySelectorAll('.img-preview');
+    previews.innerHTML = ''; // 以前のプレビューをクリア
+    existingImages.forEach((img) => {
+      previews.appendChild(img.cloneNode(true));
+    });
+  }
 
   // 新しいイベントリスナーを追加
   input.addEventListener('change', handleFileSelect);
@@ -48,3 +62,4 @@ const handleFileSelect = (event) => {
 
 window.addEventListener('turbo:load', previewImages);
 window.addEventListener('turbo:render', previewImages);
+document.addEventListener('DOMContentLoaded', previewImages);
