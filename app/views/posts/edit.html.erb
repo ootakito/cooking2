@@ -18,10 +18,11 @@ app/assets/stylesheets/posts/new.css %>
             <% end %>
           <% end %>
         </div>
-        <div class="click-upload">
+        <div id="input-container" class="click-upload">
           <p>クリックしてファイルをアップロード</p>
-          <%= f.file_field :images, name: 'post[images][]', multiple: true, id: 'post-images' %>
+          <% f.file_field :images, name: 'post[images][]', multiple: true, id: 'post-images' %>
         </div>
+        <div id="error-message" class="error-message"></div>
       </div>
       <%# /レシピ画像 %>
       <%# レシピ名とレシピ説明 %>

@@ -117,6 +117,8 @@ const clearErrorMessage = () => {
 };
 
 // ページが読み込まれた時と、ページがレンダリングされた時にプレビューを設定
-window.addEventListener('turbo:load', previewImages);
-window.addEventListener('turbo:render', previewImages);
+document.addEventListener('turbo:load', previewImages);
+document.addEventListener('turbo:render', previewImages);
 document.addEventListener('DOMContentLoaded', previewImages);
+
+/////１２３
