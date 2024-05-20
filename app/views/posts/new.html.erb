@@ -1,9 +1,9 @@
 <div class="post-contents">
   <div class="post-main">
     <h2 class="post-title">レシピを入力</h2>
-    <%= form_with model: @post, id: 'new_post', local: true do |f| %>
+    <%= form_with model: @post, local: true, id: @post.new_record? ? 'new_post' : 'edit_post' do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
-
+      <div id="error-message" style="color: red; display: none;"></div>
       <%# レシピ画像 %>
       <div class="img-upload">
         <div class="weight-bold-text">
@@ -11,9 +11,11 @@
           <span class="indispensable">必須</span>
         </div>
         <div id="previews"></div>
-        <div class="click-upload">
-          <p>クリックしてファイルをアップロード</p>
-          <%= f.file_field :images, name: 'post[images][]', multiple: true, id: "post-images" %>
+        <div id="input-container">
+          <div class="click-upload">
+            <p>クリックしてファイルをアップロード最大3枚まで</p>
+            <% f.file_field :images, name: 'post[images][]', multiple: true, id: "post-images" %>
+          </div>
         </div>
       </div>
       <%# /レシピ画像 %>
