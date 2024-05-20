@@ -3,10 +3,13 @@
 <div class="recipe-card-show">
   <div class="recipe-card">
     <% if @post.images.attached? %>
-      <%= image_tag @post.images.first.variant(resize: "260x260!"), class: 'post-image' %>
+      <% @post.images.each do |image| %>
+        <%= image_tag image.variant(resize: "260x260!"), class: 'post-image' %>
+      <% end %>
     <% end %>
   </div>
 </div>
+
 <div class="recipe-card-show2">
   <div class="show-text">
     <div class="new-posts">

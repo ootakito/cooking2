@@ -20,10 +20,10 @@ const previewImages = () => {
   // 編集フォームの場合、既存の画像を表示
   if (editPostForm) {
     console.log("編集投稿フォームが見つかりました");
-    const existingImages = editPostForm.querySelectorAll('.img-preview');
+    const existingImages = editPostForm.querySelectorAll('.existing-image');
     previews.innerHTML = ''; // プレビューをクリア
     existingImages.forEach((img) => {
-      const imgContainer = createImageContainer(img.src, null);
+      const imgContainer = createImageContainer(img.dataset.src, null, img.dataset.id);
       previews.appendChild(imgContainer);
     });
   }
@@ -74,7 +74,7 @@ const handleFileSelect = (event) => {
   addFileInput();
 };
 
-const createImageContainer = (src, fileInput) => {
+const createImageContainer = (src, fileInput, imageId = null) => {
   const imgContainer = document.createElement('div');
   imgContainer.classList.add('img-container');
 
@@ -90,6 +90,13 @@ const createImageContainer = (src, fileInput) => {
     imgContainer.remove();
     if (fileInput) {
       fileInput.remove();
+    }
+    if (imageId) {
+      const removeImageInput = document.createElement('input');
+      removeImageInput.type = 'hidden';
+      removeImageInput.name = 'post[remove_images][]';
+      removeImageInput.value = imageId;
+      document.getElementById('input-container').appendChild(removeImageInput);
     }
     const inputContainer = document.getElementById('input-container');
     const inputs = inputContainer.querySelectorAll('.file-input');
@@ -121,4 +128,4 @@ document.addEventListener('turbo:load', previewImages);
 document.addEventListener('turbo:render', previewImages);
 document.addEventListener('DOMContentLoaded', previewImages);
 
-/////１２３
+///ああああうえ
