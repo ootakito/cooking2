@@ -6,11 +6,14 @@
     <% @posts.each do |post| %>
       <div class="recipe-card">
         <%= link_to post_path(post), style: "text-decoration: none;" do %>
-        <%= post.title %>
-        <%= image_tag post.image.variant(resize: "260x260!"), class: 'post-image' if post.image.attached? %>
+          <%= post.title %>
+          <% if post.images.attached? %>
+            <%= image_tag post.images.first.variant(resize: "260x260!"), class: 'post-image' %>
+          <% end %>
+          <%= render partial: "likes/like", locals: { post: post } %>
         <% end %>
-        <%= render partial: "likes/like", locals: { post: post } %>
       </div>
     <% end %>
   </div>
 </div>
+
