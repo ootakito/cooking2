@@ -1,15 +1,4 @@
 <%= render "shared/header" %>
-
-<div class="recipe-card-show">
-  <div class="recipe-card">
-    <% if @post.images.attached? %>
-      <% @post.images.each do |image| %>
-        <%= image_tag image.variant(resize: "260x260!"), class: 'post-image' %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
 <div class="recipe-card-show2">
   <div class="show-text">
     <div class="new-posts">
@@ -26,6 +15,15 @@
       </div>
       <div class="posts-text" id="post-title">
         <%= @post.title %>
+      </div>
+      <div class="recipe-card-show">
+        <div class="recipe-card-side">
+        <% if @post.images.attached? %>
+        <% @post.images.each do |image| %>
+          <%= image_tag image.variant(resize: "200x200!") %>
+        <% end %>
+        <% end %>
+        </div>
       </div>
       <div class="posts-explain">
       <div class="weight-bold-text">
