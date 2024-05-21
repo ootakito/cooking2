@@ -1,9 +1,7 @@
-<%# cssはレシピ投稿ページのものを併用しています。
-app/assets/stylesheets/posts/new.css %>
 <div class="post-contents">
   <div class="post-main">
     <h2 class="post-title">レシピを入力</h2>
-    <%= form_with model: @post, id: @post.new_record? ? 'new_post' : 'edit_post', local: true do |f| %>
+    <%= form_with model: @post, id: @post.new_record? ? 'new_post' : 'edit_post', local: true do |f| %> <!-- 新規投稿フォームか編集投稿フォームかに応じてIDを設定 -->
       <%= render 'shared/error_messages', model: f.object %>
       <%# レシピ画像 %>
       <div class="img-upload">
@@ -14,13 +12,13 @@ app/assets/stylesheets/posts/new.css %>
         <div id="previews">
           <% if @post.images.attached? %>
             <% @post.images.each do |image| %>
-              <%= image_tag image.variant(resize_to_limit: [100, 100]), class: 'img-preview' %>
+              <img class="existing-image" data-id="<%= image.id %>" data-src="<%= url_for(image) %>">
             <% end %>
           <% end %>
         </div>
         <div id="input-container" class="click-upload">
           <p>クリックしてファイルをアップロード</p>
-          <% f.file_field :images, name: 'post[images][]', multiple: true, id: 'post-images' %>
+          <% f.file_field :images, name: 'post[images][]', multiple: true, id: 'post-images', class: 'file-input' %>
         </div>
         <div id="error-message" class="error-message"></div>
       </div>
