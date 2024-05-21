@@ -35,9 +35,9 @@
         <% end %>
       <div class="show-btn">
         <% if current_user && current_user.id == @post.user_id %>
-        <%= link_to "レシピの編集", edit_post_path(@post), class: "post-yellow-btn" %>
+        <%= link_to "レシピの編集", edit_post_path(@post), class: "post-yellow-btn" , style: "text-decoration: none;" %>
           <p class="or-text">or</p>
-        <%= link_to "削除", post_path(@post), method: :delete, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "post-destroy" %>
+        <%= link_to "削除", post_path(@post), method: :delete, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "post-destroy", style: "text-decoration: none;" %>
         <% end %>
     </div>
   </div>
