@@ -49,7 +49,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_13_051703) do
   end
 
   create_table "posts", charset: "utf8", force: :cascade do |t|
-    t.string "image_title_one"
     t.string "title"
     t.text "description"
     t.bigint "user_id", null: false
