@@ -2,16 +2,17 @@
 <div class='main'>
   <div class="recipe-new">新着のレシピ</div>
   <div class="recipe-grid">
-  <% @posts.each do |post| %>
-    <div class="recipe-card">
-      <%= link_to post_path(post), style: "text-decoration: none;" do %>
-      <%= post.title %>
-        <% if post.images.attached? %>
-          <%= image_tag post.images.first.variant(resize: "260x260!"), class: 'post-image' %>
+    <% @posts.each do |post| %>
+      <div class="recipe-card">
+        <%= link_to post_path(post), style: "text-decoration: none;" do %>
+          <%= post.title %>
+          <% if post.images.attached? %>
+            <% last_image = post.images.last.variant(resize: "260x260!") %>
+            <%= image_tag last_image, class: 'post-image' %>
+          <% end %>
         <% end %>
-      <% end %>
         <%= render partial: "likes/like", locals: { post: post } %>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

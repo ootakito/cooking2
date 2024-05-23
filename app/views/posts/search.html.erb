@@ -7,7 +7,8 @@
         <%= link_to post_path(post), style: "text-decoration: none;" do %>
           <%= post.title %>
           <% if post.images.attached? %>
-          <%= image_tag post.images.first.variant(resize: "260x260!"), class: 'post-image' %>
+          <% last_image = post.images.last.variant(resize: "260x260!") %>
+          <%= image_tag last_image, class: 'post-image' %>
           <% end %>
         <% end %> 
         <div id="like-btn<%= post.id %>">
