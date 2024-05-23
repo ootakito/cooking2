@@ -20,7 +20,7 @@
         <div class="recipe-card-side">
         <% if @post.images.attached? %>
         <% @post.images.each do |image| %>
-        <%= image_tag image.variant(resize: "200x200!"), class: "recipe-image" %>
+        <%= image_tag image.variant(resize: "180x180!"), class: "recipe-image" %>
         <% end %>
         <% end %>
       </div>

@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 <div class='main'>
-  <div class="recipe-new">いいね順⭐️一覧</div>
+  <div class="recipe-new">いいね順⭐️</div>
   <div class="recipe-grid">
     <% @posts.each do |post| %>
       <div class="recipe-card">
@@ -9,8 +9,8 @@
           <% if post.images.attached? %>
             <%= image_tag post.images.first.variant(resize: "260x260!"), class: 'post-image' %>
           <% end %>
-          <%= render partial: "likes/like", locals: { post: post } %>
         <% end %>
+        <%= render partial: "likes/like", locals: { post: post } %>
       </div>
     <% end %>
   </div>

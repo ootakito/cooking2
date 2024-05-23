@@ -22,13 +22,13 @@
         <%= link_to '投稿する', new_post_path, class: 'brand-list' %>
       </li>
       <li>
-        <%= link_to 'マイページ', mypage_posts_path, class: 'brand-list' %>
+        <%= link_to '投稿済み一覧', mypage_posts_path, class: 'brand-list' unless current_page?(mypage_posts_path) %>
       </li>
       <li>
-        <%= link_to 'いいね順⭐️', popularposts_posts_path, class: 'brand-list' %>
+        <%= link_to 'いいね順⭐️', popularposts_posts_path, class: 'brand-list' unless current_page?(popularposts_posts_path) %>
       </li>
       <li>
-        <%= link_to 'トップページ', root_path, class: 'brand-list' %>
+        <%= link_to '新着のレシピ', root_path, class: 'brand-list' unless current_page?(root_path) %>
       </li>
     </ul>
     <!-- 右側ナビゲーション -->

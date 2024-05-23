@@ -10,9 +10,7 @@
           <%= image_tag post.images.first.variant(resize: "260x260!"), class: 'post-image' %>
         <% end %>
       <% end %>
-
         <%= render partial: "likes/like", locals: { post: post } %>
-  
     </div>
   <% end %>
   </div>

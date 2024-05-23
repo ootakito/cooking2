@@ -1,5 +1,3 @@
-
-
 const MAX_FILES = 3;
 
 const previewImages = () => {
