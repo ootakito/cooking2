@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
   before_action :set_post
+
   def create
     like = current_user.likes.build(post_id: params[:post_id])
     like.save
@@ -15,8 +16,10 @@ class LikesController < ApplicationController
       format.js
     end
   end
-end
 
-def set_post
-  @post = Post.find(params[:post_id])
+  private
+
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
 end
