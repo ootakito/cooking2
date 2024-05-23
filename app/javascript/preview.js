@@ -1,3 +1,4 @@
+/*
 document.addEventListener('DOMContentLoaded', () => {
   const MAX_FILES = 3;
 
@@ -140,3 +141,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+*/

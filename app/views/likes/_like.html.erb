@@ -1,10 +1,10 @@
 <% if user_signed_in? %>
   <% if post.liked_by?(current_user) %>
-    <%= button_to post_likes_path(post.id), deta:{ method: :delete }, remote: true, class: "post_likes",form: { class:"post_likes",id:"like-btn#{post.id}"} do %>
-      ほし 
+    <%= button_to post_likes_path(post), method: :delete, remote: true, class: "post_likes",form: { class:"post_likes", id:"like-btn#{post.id}"} do %>
+      ⭐️
     <% end %>
   <% else %>
-    <%= button_to post_likes_path(post.id), deta:{ method: :post }, remote: true ,class: "post_likes",form: { class:"post_likes",id:"like-btn#{post.id}"} do %>
+    <%= button_to post_likes_path(post), method: :post, remote: true ,class: "post_likes",form: { class:"post_likes", id:"like-btn#{post.id}"} do %>
       いいね!
     <% end %>
   <% end %>
