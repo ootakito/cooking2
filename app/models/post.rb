@@ -8,9 +8,12 @@ class Post < ApplicationRecord
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
-  def like_count
-    likes.count
+
+  def liked_by?(user)
+    return false unless user
+    likes.where(user_id: user.id).exists?
   end
+
   def self.ransackable_attributes(auth_object = nil)
     ["title", "description"]
   end
