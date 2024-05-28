@@ -16,11 +16,49 @@ Basic認証   ユーザー名  admin     パスワード 2135 <br>
 ◾️新着順、いいね順、投稿した料理を閲覧できる。
 # アプリケーションを作成した背景
 
-自分の知り合いに相談し提案したらそんなアプリあったら良いよねと言ってくれたのが作ったきっかけで、料理を検索した時に工程数が複雑な物と求めてる工程数が簡単な物が交互に引っかかったりしたのでそれならば最初の投稿に制限をかけて簡単に説明させる方法は無いかと感じこのアプリを作成しました。
+自分の知り合いに相談し提案したらそんなアプリあったら良いよねと言ってくれたのが作ったきっかけで、料理を検索した時に工程数が複雑な物と求めてる工程数が簡単な物が交互に引っかかったりしたのでそれならば、最初の投稿に制限をかけて簡単に説明させる方法は無いかと感じこのアプリを作成しました。
 
 # 実装予定の機能
 
 ◾️編集機能がまだ甘いので今後、技術力が身に付いたら編集機能の強化をしたいです。
 
+# データベース設計
+
+# Users
+
+| Column    | Type    | Options     |
+| --------- | ------- | ----------- |
+| nickname  | string  |  null: false        | 
+| username  | string  |         null: false         |
+| email           | string  | null: false, unique: true |
+| encrypted_password | string  | null: false         |
+
+### Association
+
+- posts: has_many
+- Likes: has_many
+
+# Posts
+
+| Column       | Type    | Options     |
+| ------------ | ------- | ----------- |
+| title        | string  |    null: false          |
+| description  | text  |    null: false          |
+| user     | references | null: false, foreign_key: true |
+### Association
+
+- User: belongs_to
+
+# Likes
+
+| Column    | Type    | Options     |
+| --------- | ------- | ----------- |
+| user   | references| foreign_key: true |
+| post | references | foreign_key: true |
+
+### Association
+
+- User: belongs_to
+- Recipe: belongs_to
 
 
