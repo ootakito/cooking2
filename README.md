@@ -64,8 +64,8 @@ Basic認証   ユーザー名  admin     パスワード 2135 <br>
 
 # 開発環境
 
-◾️フロントエンド html css JavaScript
-◾️バックエンド   ruby
+◾️フロントエンド html css JavaScript<br>
+◾️バックエンド   ruby<br>
 ◾️インフラ   AWS
 
 
