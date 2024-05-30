@@ -60,7 +60,7 @@ Basic認証   ユーザー名  admin     パスワード 2135 <br>
 ### Association
 
 - User: belongs_to
-- Recipe: belongs_to
+- post: belongs_to
 
 # 開発環境
 
